@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.backends._legacy:_Backend"
+
+[project]
+name = "devtask-manager"
+version = "0.1.0"
+description = "A developer-focused task manager CLI tool"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.8"
+
+[project.scripts]
+devtask = "src.cli:main"
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
