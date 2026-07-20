@@ -4,6 +4,7 @@ import argparse
 import sys
 from .storage import TaskStore
 from .models import Status, Priority
+from .search_cli import register_search_commands, cmd_search, cmd_stats
 
 
 def format_task(task, index=None):
@@ -135,6 +136,8 @@ def build_parser():
     p_show = subparsers.add_parser("show", help="Show task details")
     p_show.add_argument("id", type=int)
 
+    register_search_commands(subparsers)
+
     return parser
 
 
@@ -149,6 +152,8 @@ def main():
         "done": cmd_done,
         "delete": cmd_delete,
         "show": cmd_show,
+        "search": cmd_search,
+        "stats": cmd_stats,
     }
     commands[args.command](args, store)
 
